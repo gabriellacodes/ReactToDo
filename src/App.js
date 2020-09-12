@@ -24,9 +24,15 @@ function App() {
     setTodos(newTodos);
   };
 
-  const completeTodo = (index) => {
+  const toggleStatusTodo = (index) => {
     const newTodos = [...todos];
-    newTodos[index].isCompleted = true;
+    newTodos[index].isCompleted = !newTodos[index].isCompleted;
+    setTodos(newTodos);
+  };
+
+  const removeTodo = (index) => {
+    const newTodos = [...todos];
+    newTodos.splice(index, 1);
     setTodos(newTodos);
   };
 
@@ -35,7 +41,13 @@ function App() {
     <div className="todo-list">
     <h1>My To Do list</h1>
     {todos.map((todo, index) => (
-      <TodoItem todo={todo} index={index} completeTodo={completeTodo} />
+      <TodoItem
+      todo={todo}
+      index={index}
+      key={index}
+      toggleStatusTodo={toggleStatusTodo}
+      removeTodo={removeTodo}
+      />
     ))}
     <TodoForm addTodo={addTodo}/>
     </div>

@@ -1,11 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans&family=Noto+Sans+HK:wght@500&display=swap');
 
 .todo {
-    color: lavender;
+    color: purple;
     font-size: 12px;
     font-family: "Noto Sans HK";
     margin-bottom: 6px;
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+
+.complete {
+    text-decoration: line-through;
 }
