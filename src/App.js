@@ -7,7 +7,7 @@ function App() {
   const [todos, setTodos] = useState([
     {
       text: "Learn about React",
-      isCompleted: false,
+      isCompleted: true,
     },
     {
       text: "Meet friend for lunch",

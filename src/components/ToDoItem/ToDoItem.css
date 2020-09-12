@@ -2,6 +2,7 @@
 
 .todo {
     color: purple;
+    background: whitesmoke;
     font-size: 12px;
     font-family: "Noto Sans HK";
     margin-bottom: 6px;
@@ -9,6 +10,14 @@
     align-items: center;
     justify-content: space-between;
 }
+
+/* .todo#text {
+    text-align: left;
+}
+
+button.todo {
+    align-content: right;
+} */
 
 .complete {
     text-decoration: line-through;
