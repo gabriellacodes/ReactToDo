@@ -6,10 +6,6 @@ import TodoItem from "./components/ToDoItem/ToDoItem.jsx";
 function App() {
   const [todos, setTodos] = useState([
     {
-      text: "Learn about React",
-      isCompleted: true,
-    },
-    {
       text: "Meet friend for lunch",
       isCompleted: false,
     },
@@ -19,14 +15,15 @@ function App() {
     },
   ]);
 
+  const [completedTodos, setCompletedTodos] = useState([
+    {
+      text: "Learn about React",
+      isCompleted: true,
+    },
+  ])
+
   const addTodo = (text) => {
     const newTodos = [...todos, { text }];
-    setTodos(newTodos);
-  };
-
-  const toggleStatusTodo = (index) => {
-    const newTodos = [...todos];
-    newTodos[index].isCompleted = !newTodos[index].isCompleted;
     setTodos(newTodos);
   };
 
@@ -36,10 +33,30 @@ function App() {
     setTodos(newTodos);
   };
 
+  const toggleStatusTodo = (index) => {
+    const newTodos = [...todos];
+    newTodos[index].isCompleted = !newTodos[index].isCompleted;
+    removeTodo(index);
+    const newItem = newTodos[index];
+    const newCompletedTodos = [...completedTodos, newItem];
+    console.log(newItem)
+    setCompletedTodos(newCompletedTodos);
+    console.log(newCompletedTodos)
+  };
+
+  // const addCompletedTodos = (index) => {
+  //   const newTodos = [...todos];
+  //   newTodos[index].isCompleted = !newTodos[index].isCompleted;
+  //   removeTodos(index);
+  // };
+
+
+
   return (
     <div className="app">
     <div className="todo-list">
     <h1>My To Do list</h1>
+    <h2>Things left to do</h2>
     {todos.map((todo, index) => (
       <TodoItem
       todo={todo}
@@ -49,7 +66,17 @@ function App() {
       removeTodo={removeTodo}
       />
     ))}
-    <TodoForm addTodo={addTodo}/>
+      <TodoForm addTodo={addTodo}/>
+    <h2>What's been completed</h2>
+    {completedTodos.map((todo, index) => (
+      <TodoItem
+      todo={todo}
+      index={index}
+      key={index}
+      toggleStatusTodo={toggleStatusTodo}
+      removeTodo={removeTodo}
+      />
+    ))}
     </div>
     </div>
   );
