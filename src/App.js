@@ -33,15 +33,21 @@ function App() {
     setTodos(newTodos);
   };
 
+  const addCompletedTodo = (index) => {
+    const newTodos = [...todos];
+    const newItem = newTodos[index];
+    const newCompletedTodos = [...completedTodos, newItem];
+    setCompletedTodos(newCompletedTodos);
+  }
+
   const toggleStatusTodo = (index) => {
     const newTodos = [...todos];
     newTodos[index].isCompleted = !newTodos[index].isCompleted;
     removeTodo(index);
-    const newItem = newTodos[index];
-    const newCompletedTodos = [...completedTodos, newItem];
-    console.log(newItem)
-    setCompletedTodos(newCompletedTodos);
-    console.log(newCompletedTodos)
+    addCompletedTodo(index);
+    // const newItem = newTodos[index];
+    // const newCompletedTodos = [...completedTodos, newItem];
+    // setCompletedTodos(newCompletedTodos);
   };
 
   // const addCompletedTodos = (index) => {
